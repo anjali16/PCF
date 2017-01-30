@@ -1,0 +1,81 @@
+cf commands :
+
+To know the cf version
+>cf --version
+
+
+Get help at any time via "cf help" or "cf help <command>" 
+
+>cf help spaces
+
+>cf help login
+
+some of the login options
+-a API endpoint(e.g. https://api.example.com)
+-o org
+-p password
+-s space
+-u username
+e.g.
+>cf login -a api.run.pivotal.io -u sanjay.degaonkar@capgemini.com
+
+To set or view the targeted org or space
+>cf target
+
+All orgs for current user
+>cf orgs
+
+show specified org
+>cf org
+
+To see all spaces in an organization
+>cf spaces
+
+To create a new space
+>cf create-space <spacename>
+>cf create-space <spacename> -o <orgname>
+
+
+use target command to change space or organization
+>cf target -s <space name>
+>cf target -o <org name>
+
+To scale you app
+>cf scale spring-music -i 2 -m 512m
+Deploy using CLI
+-----------------
+You need a deployable application
+e.g. with Java : a jar or war
+
+Deploy by running cf push <name of your app>
+many options
+-i number of instances
+-m memory limit(e.g. 128M,256M,1024M,1G,2G)
+-n hostname
+-p local path to app directory, jar, war, zip file
+
+
+Domains and URLs
+----------------
+Every CF instance is assigned a domain at installation
+ - known as the Apps Domain
+ - For PWS this is cfapps.io
+When you deploy, your application gets a unique route(URL) to access it:hostname+app domain name
+Make sure hostname is unique otherwise cf push returns an HTTP 400 error 
+e.g
+>cf push spring-music
+gets route:spring-music.cfapps.io
+
+>cf push spring music -i 1 -m 512M -n spring-music -p build/libs/spring-music.war
+one instance, 512M memory...
+
+
+what happens when you deploy WAR file?
+--------------------------------------
+recognizes Java WAR file, prepares droplet with a JRE and Tomcat server
+Droplet is deployed to a container and starts running
+
+
+
+
+

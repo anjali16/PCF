@@ -1,0 +1,32 @@
+Login syntax:
+------
+Use cf login to log in to PWS. The cf login command uses the following syntax to specify a target API endpoint, an org (organization), and a space: $ cf login [-a API_URL] [-u USERNAME] [-p PASSWORD] [-o ORG] [-s SPACE] .
+
+API_URL: This is your API endpoint, api.run.pivotal.io.
+USERNAME: Your username.
+PASSWORD: Your password. Use of the -p option is discouraged as it may record your password in your shell history.
+ORG: The org where you want to deploy your apps.
+SPACE: The space in the org where you want to deploy your apps.
+
+Java Hello world demo steps on cf CLI(Cloud Foundry Command Line Interface:
+---------------------------------------------------------------------------
+
+1)
+Enter “cf login” to login. Enter your email id and password you used while registering to Pivotal Web Service.
+Open Command Prompt and enter the command “CD <CF_FOLDER_PATH>”.
+
+note : in case multiple spaces, you have to select your appropriate space.
+
+2)
+Enter the command “cf push” to publish the Hello World application.
+
+Note: Apps names are global. Hence you may encounter the following error:
+“The host is taken”.
+To fix that, please add a suffix or prefix (or change the entire name) to the “host” attribute within the manifest.yml file.
+
+Finally the application should be started and the app URL should be provided as below. For example in this case, it is sanjaydegaonkar.cfapps.io
+
+
+Copy the URL (in this case sanjaydegaonkar.cfapps.io) and paste it in browser. You will see the application running.
+
+
